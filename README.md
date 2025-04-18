@@ -2,6 +2,51 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# FSC Moodlet Component
+
+A React component that displays and manages Fuelling, Servicing, and Cleaning (FSC) status indicators with interactive state management.
+
+## Implementation Decisions
+
+### Architecture
+- **Single Responsibility Principle**: Component handles both display and state logic in one place for simplicity
+- **Controlled/Uncontrolled**: Works as both (manages own state but accepts initial state prop)
+- **Stateless Design**: Pure UI component with no external dependencies
+
+### State Management
+- **Internal useState**: Chosen over redux for component-local state
+- **Deterministic Transitions**: Strict state machine pattern prevents invalid states
+- **Right-Click Handling**: Implemented context menu prevention and custom logic
+
+### UI/UX
+- **Visual Hierarchy**: Color-coded states for immediate recognition
+- **Responsive Design**: Works at any size via relative units
+- **Interaction Feedback**: 
+  - Hover effects
+  - Click animations
+  - State transition clarity
+
+### Code Quality
+- **Type Safety**: PropTypes validation
+- **Performance**: Memoization considered but not needed for this scale
+- **Accessibility**: 
+  - Title attributes
+  - Keyboard interactions (could be added)
+  - Sufficient color contrast
+
+## Integration Impact
+
+### Positive Aspects
+- **Plug-and-Play**: Zero external dependencies
+- **Style Isolation**: CSS scoped to component
+- **Flexible API**: 
+  ```jsx
+  <FscMoodlet 
+    type="F" 
+    displayMode="letter" 
+    initialState="required"
+  />
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -27,44 +72,4 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Deployes [Websit](https://iqm-assessment-fsc.netlify.app/) for more information.
