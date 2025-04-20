@@ -7,21 +7,28 @@
   font-weight: bold;
   transition: all 0.2s ease;
   margin: 4px;
+  touch-action: manipulation;
 }
 
-/* Circular shape for letter mode */
+/* Responsive sizes */
 .fsc-moodlet.letter {
-  width: 32px;
-  height: 32px;
-  font-size: 16px;
-  border-radius: 50%; /* Makes it circular */
+  width: clamp(28px, 3vw, 36px);
+  height: clamp(28px, 3vw, 36px);
+  font-size: clamp(14px, 2vw, 18px);
+  border-radius: 50%;
 }
 
 .fsc-moodlet.word {
-  padding: 6px 12px;
-  font-size: 12px;
-  min-width: 100px;
-  border-radius: 16px; /* Pill shape for word mode */
+  padding: clamp(4px, 1vw, 8px) clamp(8px, 1.5vw, 16px);
+  font-size: clamp(10px, 1.5vw, 14px);
+  min-width: max-content;
+  border-radius: 999px;
+}
+
+/* Mobile adaptations */
+.fsc-moodlet.mobile.word {
+  min-width: 0;
+  padding: 6px 10px;
 }
 
 /* State colors */
@@ -33,7 +40,7 @@
 
 .fsc-moodlet.active {
   background-color: #f90505;
-  color: #000;
+  color: white;
   border: 2px solid #b32323;
 }
 
@@ -50,9 +57,21 @@
   border: 2px dashed #bdbdbd;
 }
 
-/* Hover effect */
-.fsc-moodlet:not(.inactive):hover {
-  opacity: 0.9;
+/* Interaction states */
+.fsc-moodlet:not(.inactive):hover,
+.fsc-moodlet:not(.inactive):active {
   transform: scale(1.05);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  opacity: 0.9;
+}
+
+/* Mobile tap feedback */
+.fsc-moodlet:not(.inactive):active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 480px) {
+  .fsc-moodlet.word {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
 }
